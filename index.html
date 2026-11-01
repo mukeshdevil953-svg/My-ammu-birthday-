@@ -75,12 +75,30 @@ I LOVE YOU SO MUCH AMMU! 🥹❤️
 
 <section class="page" id="final">
  <h1>Thank You Ammu! ❤️🥹</h1>
- <img class="photo" src="final.png">
+ <img class="photo" src="file_00000000f7248208a47fbcf5fbd8e3f6.png">
  <p>One beautiful memory, a thousand beautiful feelings. ❤️</p>
  <h1>I LOVE YOU! 💗</h1>
 </section>
 
 <script>
+const photos = [
+  "IMG_20260422_063535.jpg",
+  "Screenshot_20260428_193723.jpg",
+  "Snapchat-1511055745.jpg",
+  "Snapchat-154867542.jpg",
+  "Snapchat-2019336109.jpg",
+  "Snapchat-2051027668.jpg",
+  "Snapchat-2059116179.jpg",
+  "Snapchat-217904824.jpg",
+  "Snapchat-246444423.jpg",
+  "Snapchat-25927968.jpg",
+  "Snapchat-446441103.jpg",
+  "Snapchat-462134014.jpg",
+  "Snapchat-943824690.jpg",
+  "Videoshot_20260810_143352.jpg",
+  "file_00000000f7248208a47fbcf5fbd8e3f6.png"
+];
+
 function showPage(id){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  document.getElementById(id).classList.add('active');
@@ -89,23 +107,35 @@ function showPage(id){
 function startSurprise(){
  const song=document.getElementById('song');
  song.play().catch(()=>{});
+
  showPage('memories');
- let n=1;
+
+ let n=0;
+ const slideshow=document.getElementById('slideshow');
+ const count=document.getElementById('count');
+
+ slideshow.src=photos[n];
+ count.innerText=(n+1)+' / 15';
+
  const timer=setInterval(()=>{
    n++;
-   if(n>15){
+
+   if(n>=photos.length){
      clearInterval(timer);
      showPage('message');
      return;
    }
-   document.getElementById('slideshow').src='photo'+n+'.jpg';
-   document.getElementById('count').innerText=n+' / 15';
+
+   slideshow.src=photos[n];
+   count.innerText=(n+1)+' / 15';
+
  },2000);
 }
 
 function sayYes(){
  showPage('final');
 }
+
 function sayNo(){
  document.getElementById('answer').innerText=
  "Thank you for sharing your honest answer. ❤️";
