@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ammu ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:linear-gradient(135deg,#180d20,#472039);
+ color:white;font-family:Georgia,serif;text-align:center;
+ min-height:100vh;
+}
+.page{display:none;min-height:100vh;padding:35px 20px;
+ flex-direction:column;align-items:center;justify-content:center}
+.page.active{display:flex}
+h1{color:#ffb5d0;font-size:36px}
+p{line-height:1.9;font-size:17px}
+button{
+ border:0;border-radius:30px;padding:15px 28px;
+ background:#f5a4c5;color:#321326;
+ font-size:17px;font-weight:bold;margin:12px;
+}
+.photo{
+ width:90%;max-width:360px;height:440px;
+ object-fit:contain;border-radius:18px;
+ box-shadow:0 0 25px #f5a4c566;
+}
+.heart{font-size:45px}
+</style>
+</head>
+<body>
+
+<audio id="song" src="song.mp3" loop></audio>
+
+<section class="page active" id="welcome">
+ <div class="heart">💗</div>
+ <h1>Hey Ammu!</h1>
+ <p>I have a little surprise for you...</p>
+ <button onclick="startSurprise()">Open Your Surprise ❤️</button>
+</section>
+
+<section class="page" id="memories">
+ <h1>Our Beautiful Memories 📸</h1>
+ <img id="slideshow" class="photo" src="photo1.jpg">
+ <p>Every picture has a beautiful memory ❤️</p>
+ <p id="count">1 / 15</p>
+</section>
+
+<section class="page" id="message">
+ <h1>Dear Ammu ❤️</h1>
+ <p>
+En life-la nee vandhathu enakku romba special.
+Un smile, un happiness, un cute little moments
+ellame en manasula special place vachirukku.
+Un kooda create panra ovvoru memory-um
+enakku precious. Nee eppovume happy-ah irukkanum.
+Un dreams ellame achieve pannanum.
+Unakku neraya happiness kidaikkanum.
+I LOVE YOU SO MUCH AMMU! 🥹❤️
+ </p>
+ <h1>I LOVE YOU AMMU ❤️♾️</h1>
+ <button onclick="showPage('proposal')">One More Thing... 💍</button>
+</section>
+
+<section class="page" id="proposal">
+ <div class="heart">💍</div>
+ <h1>Will You Marry Me?</h1>
+ <p>A special question for you, Ammu ❤️</p>
+ <button onclick="sayYes()">YES ❤️</button>
+ <button onclick="sayNo()">NO</button>
+ <p id="answer"></p>
+</section>
+
+<section class="page" id="final">
+ <h1>Thank You Ammu! ❤️🥹</h1>
+ <img class="photo" src="final.jpg">
+ <p>One beautiful memory, a thousand beautiful feelings. ❤️</p>
+ <h1>I LOVE YOU! 💗</h1>
+</section>
+
+<script>
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+
+function startSurprise(){
+ const song=document.getElementById('song');
+ song.play().catch(()=>{});
+ showPage('memories');
+ let n=1;
+ const timer=setInterval(()=>{
+   n++;
+   if(n>15){
+     clearInterval(timer);
+     showPage('message');
+     return;
+   }
+   document.getElementById('slideshow').src='photo'+n+'.jpg';
+   document.getElementById('count').innerText=n+' / 15';
+ },2000);
+}
+
+function sayYes(){
+ showPage('final');
+}
+function sayNo(){
+ document.getElementById('answer').innerText=
+ "Thank you for sharing your honest answer. ❤️";
+}
+</script>
+</body>
+</html>
