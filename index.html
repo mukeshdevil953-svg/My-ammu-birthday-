@@ -5,109 +5,264 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Ammu ❤️</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;background:linear-gradient(135deg,#180d20,#472039);
- color:white;font-family:Georgia,serif;text-align:center;
+ margin:0;
+ background:linear-gradient(135deg,#100817,#35152f,#180d20);
+ color:white;
+ font-family:Georgia,serif;
+ text-align:center;
  min-height:100vh;
+ overflow-x:hidden;
 }
-.page{display:none;min-height:100vh;padding:35px 20px;
- flex-direction:column;align-items:center;justify-content:center}
+
+.page{
+ display:none;
+ min-height:100vh;
+ padding:30px 18px;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+}
+
 .page.active{display:flex}
-h1{color:#ffb5d0;font-size:36px}
-p{line-height:1.9;font-size:17px}
+
+h1{
+ color:#ffb5d0;
+ font-size:clamp(28px,7vw,38px);
+ text-shadow:0 0 15px #ff6ca8;
+}
+
+p{
+ line-height:1.9;
+ font-size:17px;
+ max-width:500px;
+}
+
 button{
- border:0;border-radius:30px;padding:15px 28px;
- background:#f5a4c5;color:#321326;
- font-size:17px;font-weight:bold;margin:12px;
+ border:1px solid #ffd2e4;
+ border-radius:30px;
+ padding:14px 27px;
+ background:linear-gradient(135deg,#ffb5d0,#f477ae);
+ color:#321326;
+ font-size:17px;
+ font-weight:bold;
+ margin:12px;
+ cursor:pointer;
+ box-shadow:0 0 18px #ff7bad88;
 }
+
+.heart{
+ font-size:90px;
+ animation:heartbeat 1s infinite;
+ filter:drop-shadow(0 0 20px #ff5caa);
+}
+
+@keyframes heartbeat{
+ 0%,100%{transform:scale(1)}
+ 15%{transform:scale(1.18)}
+ 30%{transform:scale(1)}
+ 45%{transform:scale(1.12)}
+}
+
+.speech{
+ background:#ffffff14;
+ border:1px solid #ffb5d055;
+ border-radius:22px;
+ padding:20px;
+ margin:20px 0;
+ max-width:450px;
+ min-height:110px;
+ box-shadow:0 0 20px #ff8cbd33;
+}
+
+.arrow{
+ font-size:25px;
+ display:inline-block;
+ animation:move 1s infinite alternate;
+}
+
+@keyframes move{
+ from{transform:translateX(-5px)}
+ to{transform:translateX(8px)}
+}
+
+.photo-frame{
+ padding:10px;
+ border:2px solid #ffb5d0;
+ border-radius:23px;
+ background:#ffffff0c;
+ box-shadow:0 0 25px #ff7bad77;
+ width:92%;
+ max-width:380px;
+}
+
 .photo{
- width:90%;max-width:360px;height:440px;
- object-fit:contain;border-radius:18px;
- box-shadow:0 0 25px #f5a4c566;
+ width:100%;
+ height:430px;
+ object-fit:contain;
+ border-radius:15px;
+ transition:opacity .6s,transform .6s;
 }
-.heart{font-size:45px}
+
+.photo.fade{
+ opacity:0;
+ transform:scale(.96);
+}
+
+#count{
+ color:#ffb5d0;
+ font-weight:bold;
+}
+
+.dots{
+ color:#ffb5d0;
+ letter-spacing:5px;
+}
+
+.heart-small{
+ font-size:35px;
+ animation:heartbeat 1.2s infinite;
+}
+
 </style>
 </head>
+
 <body>
 
-<audio id="song" src="The Metro Proposal _ Dude _ Pradeep Ranganathan_ Mamitha Baiju _ _SaiAbhyankkar _ Keerthiswaran(MP3_160K).mp3" loop></audio>
+<audio id="song"
+src="The Metro Proposal _ Dude _ Pradeep Ranganathan_ Mamitha Baiju _ _SaiAbhyankkar _ Keerthiswaran(MP3_160K).mp3"
+loop></audio>
+
+<!-- PAGE 1: WELCOME -->
 
 <section class="page active" id="welcome">
  <div class="heart">💗</div>
  <h1>Hey Ammu!</h1>
  <p>I have a little surprise for you...</p>
- <button onclick="startSurprise()">Open Your Surprise ❤️</button>
+ <button onclick="openHeart()">Open Your Surprise ❤️</button>
 </section>
 
+<!-- PAGE 2: TALKING HEART -->
+
+<section class="page" id="heartPage">
+ <div class="heart">❤️</div>
+ <h1>A Little Message For You</h1>
+
+ <div class="speech">
+  <p id="heartText">
+   Ammu... unakkaga oru chinna surprise...
+  </p>
+ </div>
+
+ <button id="heartButton" onclick="showMemories()">
+  <span class="arrow">➜</span> Let's Go ❤️
+ </button>
+</section>
+
+<!-- PAGE 3: MEMORIES -->
+
 <section class="page" id="memories">
-  <h1>Our Beautiful Memories 📸</h1>
-  <img id="slideshow" class="photo" src="IMG_20260422_063535.jpg">
-  <p>Every picture has a beautiful memory ❤️</p>
-  <p id="count">1 / 15</p>
+ <h1>Our Beautiful Memories 📸</h1>
+
+ <div class="photo-frame">
+  <img id="slideshow" class="photo"
+  src="IMG_20260422_063535.jpg">
+ </div>
+
+ <p>Every picture has a beautiful memory ❤️</p>
+ <p id="count">1 / 15</p>
+ <p class="dots">♥ ♥ ♥</p>
 </section>
- 
+
+<!-- PAGE 4: MESSAGE -->
+
 <section class="page" id="message">
+ <div class="heart-small">💗</div>
  <h1>Dear Ammu ❤️</h1>
+
  <p>
-En life-la nee vandhathu enakku romba special.
-Un smile, un happiness, un cute little moments
-ellame en manasula special place vachirukku.
-Un kooda create panra ovvoru memory-um
-enakku precious. Nee eppovume happy-ah irukkanum.
-Un dreams ellame achieve pannanum.
-Unakku neraya happiness kidaikkanum.
-I LOVE YOU SO MUCH AMMU! 🥹❤️
+ En life-la nee vandhathu enakku romba special.
+ Un smile, un happiness, un cute little moments
+ ellame en manasula special place vachirukku.
+ Un kooda create panra ovvoru memory-um
+ enakku precious. Nee eppovume happy-ah irukkanum.
+ Un dreams ellame achieve pannanum.
+ Unakku neraya happiness kidaikkanum.
+ I LOVE YOU SO MUCH AMMU! 🥹❤️
  </p>
+
  <h1>I LOVE YOU AMMU ❤️♾️</h1>
- <button onclick="showPage('proposal')">One More Thing... 💍</button>
+
+ <button onclick="showPage('proposal')">
+  One More Thing... 💍
+ </button>
 </section>
+
+<!-- PAGE 5: PROPOSAL -->
 
 <section class="page" id="proposal">
  <div class="heart">💍</div>
  <h1>Will You Marry Me?</h1>
  <p>A special question for you, Ammu ❤️</p>
+
  <button onclick="sayYes()">YES ❤️</button>
  <button onclick="sayNo()">NO</button>
+
  <p id="answer"></p>
 </section>
 
+<!-- PAGE 6: FINAL -->
+
 <section class="page" id="final">
  <h1>Thank You Ammu! ❤️🥹</h1>
- <img class="photo" src="file_00000000f7248208a47fbcf5fbd8e3f6.png">
+
+ <div class="photo-frame">
+  <img class="photo"
+  src="file_00000000f7248208a47fbcf5fbd8e3f6.png">
+ </div>
+
  <p>One beautiful memory, a thousand beautiful feelings. ❤️</p>
  <h1>I LOVE YOU! 💗</h1>
 </section>
 
 <script>
+
 const photos = [
-  "IMG_20260422_063535.jpg",
-  "Screenshot_20260428_193723.jpg",
-  "Snapchat-1511055745.jpg",
-  "Snapchat-154867542.jpg",
-  "Snapchat-2019336109.jpg",
-  "Snapchat-2051027668.jpg",
-  "Snapchat-2059116179.jpg",
-  "Snapchat-217904824.jpg",
-  "Snapchat-246444423.jpg",
-  "Snapchat-25927968.jpg",
-  "Snapchat-446441103.jpg",
-  "Snapchat-462134014.jpg",
-  "Snapchat-943824690.jpg",
-  "Videoshot_20260810_143352.jpg",
-  "file_00000000f7248208a47fbcf5fbd8e3f6.png"
+ "IMG_20260422_063535.jpg",
+ "Screenshot_20260428_193723.jpg",
+ "Snapchat-1511055745.jpg",
+ "Snapchat-154867542.jpg",
+ "Snapchat-2019336109.jpg",
+ "Snapchat-2051027668.jpg",
+ "Snapchat-2059116179.jpg",
+ "Snapchat-217904824.jpg",
+ "Snapchat-246444423.jpg",
+ "Snapchat-25927968.jpg",
+ "Snapchat-446441103.jpg",
+ "Snapchat-462134014.jpg",
+ "Snapchat-943824690.jpg",
+ "Videoshot_20260810_143352.jpg",
+ "file_00000000f7248208a47fbcf5fbd8e3f6.png"
 ];
 
 function showPage(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
  document.getElementById(id).classList.add('active');
 }
 
-function startSurprise(){
+function openHeart(){
  const song=document.getElementById('song');
  song.play().catch(()=>{});
+ showPage('heartPage');
+}
 
+function showMemories(){
  showPage('memories');
 
  let n=0;
@@ -115,19 +270,24 @@ function startSurprise(){
  const count=document.getElementById('count');
 
  slideshow.src=photos[n];
- count.innerText=(n+1)+' / 15';
+ count.innerText=(n+1)+' / '+photos.length;
 
  const timer=setInterval(()=>{
-   n++;
+  n++;
 
-   if(n>=photos.length){
-     clearInterval(timer);
-     showPage('message');
-     return;
-   }
+  if(n>=photos.length){
+   clearInterval(timer);
+   showPage('message');
+   return;
+  }
 
+  slideshow.classList.add('fade');
+
+  setTimeout(()=>{
    slideshow.src=photos[n];
-   count.innerText=(n+1)+' / 15';
+   count.innerText=(n+1)+' / '+photos.length;
+   slideshow.classList.remove('fade');
+  },400);
 
  },2000);
 }
@@ -140,6 +300,8 @@ function sayNo(){
  document.getElementById('answer').innerText=
  "Thank you for sharing your honest answer. ❤️";
 }
+
 </script>
 </body>
-</html>
+ </html>
+ 
